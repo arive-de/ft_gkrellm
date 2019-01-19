@@ -6,7 +6,7 @@
 #    By: arive-de <arive-de@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/09 18:11:43 by zweng             #+#    #+#              #
-#    Updated: 2019/01/19 11:39:20 by arive-de         ###   ########.fr        #
+#    Updated: 2019/01/19 13:38:44 by arive-de         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,9 @@ NAME 			= ft_gkrellm
 HEADER_PATH 	= includes
 SRC_PATH 		= srcs
 
-SRC_NAME		= main.cpp
+SRC_NAME		= main.cpp \
+			IMonitorDisplayClass.cpp \
+			IMonitorModuleClass.cpp
 
 OBJ_PATH =  obj
 OBJ_NAME =  $(SRC_NAME:.cpp=.o)
