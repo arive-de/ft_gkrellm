@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ShellUIClass.cpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgourdin <jgourdin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: arive-de <arive-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/19 14:56:47 by jgourdin          #+#    #+#             */
-/*   Updated: 2019/01/19 15:10:00 by jgourdin         ###   ########.fr       */
+/*   Updated: 2019/01/19 15:18:41 by arive-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ ShellUI::ShellUI(void)
     return;
 }
 
-    ShellUI::ShellUI(ShellUI const & src) 
+ShellUI::ShellUI(ShellUI const & src) 
 {
     *this = src;
     return;

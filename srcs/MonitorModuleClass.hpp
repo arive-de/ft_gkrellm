@@ -1,31 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   IMonitorModuleClass.hpp                            :+:      :+:    :+:   */
+/*   MonitorModuleClass.hpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arive-de <arive-de@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgourdin <jgourdin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/19 12:04:13 by jgourdin          #+#    #+#             */
-/*   Updated: 2019/01/19 15:28:26 by arive-de         ###   ########.fr       */
+/*   Updated: 2019/01/19 12:10:28 by jgourdin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef IMONITORMODULECLASS_HPP
-# define IMONITORMODULECLASS_HPP
+#ifndef MONITORMODULECLASS_HPP
+# define MONITORMODULECLASS_HPP
 
+# include "IMonitorModuleClass.hpp"
 # include <iostream>
+#include <stdlib.h>
 
-class IMonitorModule {
+class MonitorModule : public IMonitorModule {
 
 public: 
 
-    IMonitorModule(void); 
-    IMonitorModule(IMonitorModule const & src); 
-    ~IMonitorModule(void); 
+    typedef MonitorModule	t;
+    MonitorModule(void); 
+    MonitorModule(MonitorModule const & src); 
+    ~MonitorModule(void); 
     
-	IMonitorModule &		operator=(IMonitorModule const & rhs);
+	MonitorModule &		operator=(MonitorModule const & rhs);
+
+    int            getFlag() const;
+    bool           getStart() const;
 
 private:
+    bool    _start;
+    int     _flag;
 
 };
 

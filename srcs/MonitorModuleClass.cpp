@@ -1,40 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   IMonitorModuleClass.cpp                            :+:      :+:    :+:   */
+/*   MonitorModuleClass.cpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arive-de <arive-de@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgourdin <jgourdin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/19 12:04:31 by jgourdin          #+#    #+#             */
-/*   Updated: 2019/01/19 15:28:10 by arive-de         ###   ########.fr       */
+/*   Updated: 2019/01/19 15:03:17 by jgourdin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "IMonitorModuleClass.hpp"
+#include "MonitorModuleClass.hpp"
 #include <iostream>
 
-IMonitorModule::IMonitorModule(void)
+MonitorModule::MonitorModule(void)
 {
     return;
 }
 
-    IMonitorModule::IMonitorModule(IMonitorModule const & src) 
+    MonitorModule::MonitorModule(MonitorModule const & src) 
 {
     *this = src;
     return;
 }
 
-IMonitorModule::~IMonitorModule(void)
+MonitorModule::~MonitorModule(void)
 {
     return;
 }
 
+int                 MonitorModule::getFlag(void) const
+{
+    return this->_flag;
+}
 
-IMonitorModule &	IMonitorModule::operator=(IMonitorModule const & rhs)
+bool                 MonitorModule::getStart(void) const
+{
+    return this->_start;
+}
+
+
+
+MonitorModule &	MonitorModule::operator=(MonitorModule const & rhs)
 {
     if (this != &rhs)
     {
-        (void) rhs;
+        this->_start = rhs.getStart();
+        this->_flag = rhs.getFlag();
     }
     return *this;
 }
