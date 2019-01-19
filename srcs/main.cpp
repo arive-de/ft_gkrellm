@@ -6,12 +6,16 @@
 /*   By: arive-de <arive-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/19 11:40:25 by arive-de          #+#    #+#             */
-/*   Updated: 2019/01/19 11:56:44 by arive-de         ###   ########.fr       */
+/*   Updated: 2019/01/19 12:35:19 by arive-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ncurses.h>
 #include <iostream>
+#include <stdarg.h>
+#include <sys/types.h>
+#include <unistd.h>
+#include <stdio.h>
 
 bool duration(std::clock_t *_start)
 {
@@ -41,16 +45,22 @@ int     main( void ) {
 
     std::clock_t c_start = std::clock();
 
+    time_t ctt = time(0);
+
+    std::string str;
     while (1)
     {
         if (duration(&c_start))
         {
+            ctt = time(0);
             wclear(win);
             box(win, 0, 0);
-            start_color();			/* Start color 			*/
+            start_color();
             init_pair(1, COLOR_RED, COLOR_BLACK);
             attron(COLOR_PAIR(1));
-            mvwprintw(win, 0, 2, " date: ");
+            str = asctime(localtime(&ctt));
+            str = str.substr(0, str.size() - 1);
+            mvwprintw(win, 1, 2, str.c_str());
             wrefresh(win);
         }
         if ((keycode = wgetch(win)) == ERR)
