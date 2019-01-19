@@ -1,52 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   IMonitorModuleClass.cpp                            :+:      :+:    :+:   */
+/*   ShellUIClass.cpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgourdin <jgourdin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/19 12:04:31 by jgourdin          #+#    #+#             */
-/*   Updated: 2019/01/19 15:03:17 by jgourdin         ###   ########.fr       */
+/*   Created: 2019/01/19 14:56:47 by jgourdin          #+#    #+#             */
+/*   Updated: 2019/01/19 15:10:00 by jgourdin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "IMonitorModuleClass.hpp"
+#include "ShellUIClass.hpp"
 #include <iostream>
 
-IMonitorModule::IMonitorModule(void)
+ShellUI::ShellUI(void)
 {
     return;
 }
 
-    IMonitorModule::IMonitorModule(IMonitorModule const & src) 
+    ShellUI::ShellUI(ShellUI const & src) 
 {
     *this = src;
     return;
 }
 
-IMonitorModule::~IMonitorModule(void)
+ShellUI::~ShellUI(void)
 {
     return;
 }
 
-int                 IMonitorModule::getFlag(void) const
-{
-    return this->_flag;
-}
-
-bool                 IMonitorModule::getStart(void) const
-{
-    return this->_start;
-}
-
-
-
-IMonitorModule &	IMonitorModule::operator=(IMonitorModule const & rhs)
+ShellUI &	ShellUI::operator=(ShellUI const & rhs)
 {
     if (this != &rhs)
     {
-        this->_start = rhs.getStart();
-        this->_flag = rhs.getFlag();
+        this->_displayMode = rhs.getDisplayMode();
+        this->_start = rhs._start;
+        this->_ctt = rhs._ctt;
+        this->_win = rhs._win;
+        this->_cttStr = rhs._cttStr;
     }
     return *this;
 }

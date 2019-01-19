@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   IMonitorDisplayClass.hpp                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arive-de <arive-de@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgourdin <jgourdin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/19 12:11:49 by jgourdin          #+#    #+#             */
-/*   Updated: 2019/01/19 14:31:38 by arive-de         ###   ########.fr       */
+/*   Updated: 2019/01/19 15:04:54 by jgourdin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,13 @@ public:
     void            init_display(void);
     bool            duration(void);
     std::clock_t    getStart(void);
+    time_t          getCtt(void);
+    WINDOW          *getWin(void);
+    std::clock_t    getStart(void);
+    std::string     getCttStr(void);
     void            refreshTime(void);
 
-private:
+protected:
 
     bool         _displayMode;
     std::clock_t _start;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   IMonitorDisplayClass.cpp                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arive-de <arive-de@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgourdin <jgourdin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/19 12:11:58 by jgourdin          #+#    #+#             */
-/*   Updated: 2019/01/19 14:33:36 by arive-de         ###   ########.fr       */
+/*   Updated: 2019/01/19 15:08:47 by jgourdin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,36 @@ bool                IMonitorDisplay::getDisplayMode(void) const
     return this->_displayMode;
 }
 
+time_t          IMonitorDisplay::getCtt(void)
+{
+    return this->_ctt;
+}
+
+WINDOW          *IMonitorDisplay::getWin(void)
+{
+    return this->_win;
+}
+
+std::clock_t    IMonitorDisplay::getStart(void)
+{
+    return this->_start;
+}
+
+std::string     IMonitorDisplay::getCttStr(void)
+{
+    return this->_cttStr;
+}
+
 IMonitorDisplay &	IMonitorDisplay::operator=(IMonitorDisplay const & rhs)
 {
     if (&rhs != this)
+    {
         this->_displayMode = rhs.getDisplayMode();
+        this->_start = rhs._start;
+        this->_ctt = rhs._ctt;
+        this->_win = rhs._win;
+        this->_cttStr = rhs._cttStr;
+    }
     return *this;
 }
 
