@@ -6,7 +6,7 @@
 /*   By: arive-de <arive-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/19 11:40:25 by arive-de          #+#    #+#             */
-/*   Updated: 2019/01/19 14:31:54 by arive-de         ###   ########.fr       */
+/*   Updated: 2019/01/19 14:38:27 by arive-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 int     main( void ) {
 
     IMonitorDisplay display;
+    IMonitorModule  module;
 
     display.init_display();
 
