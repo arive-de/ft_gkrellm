@@ -6,7 +6,7 @@
 /*   By: arive-de <arive-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/19 12:11:58 by jgourdin          #+#    #+#             */
-/*   Updated: 2019/01/19 14:33:36 by arive-de         ###   ########.fr       */
+/*   Updated: 2019/01/19 14:52:04 by arive-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ IMonitorDisplay::IMonitorDisplay(void)
     return;
 }
 
-    IMonitorDisplay::IMonitorDisplay(IMonitorDisplay const & src) 
+IMonitorDisplay::IMonitorDisplay(IMonitorDisplay const & src) 
 {
     *this = src;
     return;
