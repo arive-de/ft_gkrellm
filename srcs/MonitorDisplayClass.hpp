@@ -37,6 +37,7 @@ public:
     WINDOW          *getWin(void);
     std::string     getCttStr(void);
     void            refreshTime(void);
+    // void            cpuModule( void );
 
 protected:
 

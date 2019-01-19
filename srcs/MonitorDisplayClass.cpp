@@ -14,8 +14,10 @@
 
 MonitorDisplay::MonitorDisplay(void)
 {
+    
     this->_start = std::clock();
-    this->_ctt = time(0);
+
+    // this->_ctt = time(0);
     return;
 }
 
@@ -35,11 +37,6 @@ bool            MonitorDisplay::getDisplayMode(void) const
     return this->_displayMode;
 }
 
-time_t          MonitorDisplay::getCtt(void)
-{
-    return this->_ctt;
-}
-
 WINDOW          *MonitorDisplay::getWin(void)
 {
     return this->_win;
@@ -50,20 +47,12 @@ std::clock_t    MonitorDisplay::getStart(void)
     return this->_start;
 }
 
-std::string     MonitorDisplay::getCttStr(void)
-{
-    return this->_cttStr;
-}
-
 MonitorDisplay &	MonitorDisplay::operator=(MonitorDisplay const & rhs)
 {
     if (&rhs != this)
     {
         this->_displayMode = rhs.getDisplayMode();
         this->_start = rhs._start;
-        this->_ctt = rhs._ctt;
-        this->_win = rhs._win;
-        this->_cttStr = rhs._cttStr;
     }
     return *this;
 }
@@ -81,14 +70,29 @@ bool    MonitorDisplay::duration(void)
     return false;
 }
 
-void    MonitorDisplay::refreshTime( void )
-{
-    this->_ctt = time(0);
-    this->_cttStr = asctime(localtime(&this->_ctt));
-    this->_cttStr = this->_cttStr.substr(0, this->_cttStr.size() - 1);
-    attron(COLOR_PAIR(1));
-    mvwprintw(stdscr, 1, 2, this->_cttStr.c_str());
-}
+// void    MonitorDisplay::cpuModule( void )
+// {
+//     // this->_ctt = time(0);
+//     // this->_cttStr = asctime(localtime(&this->_ctt));
+//     // this->_cttStr = this->_cttStr.substr(0, this->_cttStr.size() - 1);
+//     // attron(COLOR_PAIR(1));
+//     // mvwprintw(stdscr, 1, 2, this->_cttStr.c_str());
+
+//     // if (host_statistics(mach_host_self(), HOST_CPU_LOAD_INFO, reinterpret_cast<host_info_t>(&this->_cpuinfo), &this->_count) == KERN_SUCCESS)
+// 	// {
+// 		// this->_userTicks = this->_cpuinfo.cpu_ticks[0] - this->_prevUserTicks;
+// 		// this->_cpuTicks = this->_cpuinfo.cpu_ticks[1] - this->_prevCpuTicks;
+// 		// this->_idleTicks = this->_cpuinfo.cpu_ticks[2] - this->_prevIdleTicks;
+// 		// this->_prevUserTicks = this->_cpuinfo.cpu_ticks[0];
+// 		// this->_prevCpuTicks = this->_cpuinfo.cpu_ticks[1];
+// 		// this->_prevIdleTicks = this->_cpuinfo.cpu_ticks[2];
+
+// 		// mvwprintw(stdscr, 1, 2, "User : %.2f%%", static_cast<float>(this->_userTicks) / atoi(this->_coreCount.c_str()));
+// 		// mvwprintw(stdscr, 2, 2, "Sys  : %.2f%%", static_cast<float>(this->_cpuTicks) / atoi(this->_coreCount.c_str()));
+// 		// mvwprintw(stdscr, 3, 2, "Idle : %.2f%%", static_cast<float>(this->_idleTicks) / atoi(this->_coreCount.c_str()));
+// 	// }
+
+// }
 
 void    MonitorDisplay::init_display(void) {
 
