@@ -6,7 +6,7 @@
 /*   By: arive-de <arive-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/19 12:11:58 by jgourdin          #+#    #+#             */
-/*   Updated: 2019/01/19 14:52:04 by arive-de         ###   ########.fr       */
+/*   Updated: 2019/01/20 15:31:52 by arive-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,29 @@ bool    IMonitorDisplay::duration(void)
     return false;
 }
 
-void    IMonitorDisplay::refreshTime( void )
-{
-    this->_ctt = time(0);
-    this->_cttStr = asctime(localtime(&this->_ctt));
-    this->_cttStr = this->_cttStr.substr(0, this->_cttStr.size() - 1);
-    attron(COLOR_PAIR(1));
-    mvwprintw(stdscr, 1, 2, this->_cttStr.c_str());
-}
+// void    IMonitorDisplay::refreshCpuUsage( void )
+// {
+    // this->_ctt = time(0);
+    // this->_cttStr = asctime(localtime(&this->_ctt));
+    // this->_cttStr = this->_cttStr.substr(0, this->_cttStr.size() - 1);
+    // attron(COLOR_PAIR(1));
+    // mvwprintw(stdscr, 1, 2, this->_cttStr.c_str());
+
+    // if (host_statistics(mach_host_self(), HOST_CPU_LOAD_INFO, reinterpret_cast<host_info_t>(&this->_cpuinfo), &this->_count) == KERN_SUCCESS)
+	// {
+		// this->_userTicks = this->_cpuinfo.cpu_ticks[0] - this->_prevUserTicks;
+		// this->_cpuTicks = this->_cpuinfo.cpu_ticks[1] - this->_prevCpuTicks;
+		// this->_idleTicks = this->_cpuinfo.cpu_ticks[2] - this->_prevIdleTicks;
+		// this->_prevUserTicks = this->_cpuinfo.cpu_ticks[0];
+		// this->_prevCpuTicks = this->_cpuinfo.cpu_ticks[1];
+		// this->_prevIdleTicks = this->_cpuinfo.cpu_ticks[2];
+
+		// mvwprintw(stdscr, 1, 2, "User : %.2f%%", static_cast<float>(this->_userTicks) / atoi(this->_coreCount.c_str()));
+		// mvwprintw(stdscr, 2, 2, "Sys  : %.2f%%", static_cast<float>(this->_cpuTicks) / atoi(this->_coreCount.c_str()));
+		// mvwprintw(stdscr, 3, 2, "Idle : %.2f%%", static_cast<float>(this->_idleTicks) / atoi(this->_coreCount.c_str()));
+	// }
+
+// }
 
 std::clock_t    IMonitorDisplay::getStart(void)
 {
