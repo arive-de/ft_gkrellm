@@ -6,33 +6,36 @@
 /*   By: jgourdin <jgourdin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/19 14:55:45 by jgourdin          #+#    #+#             */
-/*   Updated: 2019/01/20 15:40:20 by jgourdin         ###   ########.fr       */
+/*   Updated: 2019/01/20 17:40:41 by jgourdin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "GraphicalUIClass.hpp"
+#include "IMonitorModuleClass.hpp"
+#include "OsInfosModule.hpp"
+#include "DatetimeModule.hpp"
+#include "HostnameModule.hpp"
+#include "CpuModule.hpp"
+#include "UsernameModule.hpp"
 #include <iostream>
 #include <algorithm>
 
 GraphicalUI::GraphicalUI(sf::RenderWindow &window) : _window(&window)
 {
-    // std::vector<IMonitorModule*> 	modules;
-
-    // modules.push_back(new HostNameModule(" HOST NAME "));
-	// modules.push_back(new OSInfoModule(" OS INFO "));
-	// modules.push_back(new DateTimeModule(" DATE & TIME "));
-	// modules.push_back(new CPUInfoModule(" CPU INFO "));
-	// modules.push_back(new CPUUsageModule(" CPU USAGE "));
-	// modules.push_back(new RAMUsageModule(" RAM USAGE "));
-	// modules.push_back(new NetworkInfoModule(" NETWORK INFO "));
-    if (!this->_font.loadFromFile("Fonts/Metropolian-Display.ttf"))
+    this->_modules.push_back(new OsInfosModule());
+	this->_modules.push_back(new HostnameModule());
+	this->_modules.push_back(new DatetimeModule());
+	this->_modules.push_back(new CpuModule());
+	this->_modules.push_back(new UsernameModule());
+	//this->_modules.push_back(new NetworkInfoModule(" NETWORK INFO "));
+    if (!this->_font.loadFromFile("Fonts/Dosis-Light.ttf"))
 		throw("COULD NOT LOAD FONT!");
-    this->addTitles(15, "Hostname/username modules :", 50, 130);
+    /*this->addTitles(15, "Hostname/username modules :", 50, 130);
     this->addTitles(15, "OSinfo :", 570, 130);
     this->addTitles(15, "Date/time module :", 120, 330);
     this->addTitles(15, "CPUmodule :", 570, 330);
     this->addTitles(15, "RAMmodule :", 120, 530);
-    this->addTitles(15, "FT_GKRELLM", 300, 35);
+    this->addTitles(15, "FT_GKRELLM", 300, 35); */
     this->addRectangle(800, 100, 0, 0);
     this->addRectangle(800, 600, 0, 100);
     if (!this->_space.loadFromFile("Textures/space.jpg"))
@@ -51,7 +54,7 @@ void    GraphicalUI::addTitles(int size, std::string text, int x, int y)
     text1.setFont(this->_font);
 	text1.setCharacterSize(size);
 	text1.setColor(sf::Color::Red);
-	text1.setStyle(sf::Text::Bold);
+	//text1.setStyle(sf::Text::Bold);
 	text1.setString(text);
 	text1.setPosition(x, y);
 
@@ -83,13 +86,13 @@ void    GraphicalUI::addCadre(int size_x, int size_y, int pos_x, int pos_y)
 
 void    GraphicalUI::render(void)
 {
+    this->_window->clear();
     this->_cadres.erase(this->_cadres.begin(), this->_cadres.end());
-    std::vector<sf::Text>::const_iterator it = this->_titles.begin();
-    std::vector<sf::Text>::const_iterator ite = this->_titles.end();
     int     pos_x = 0;
     int     pos_y = 100;
-    for(it = this->_titles.begin() + 1; it != ite; ++it)
+    for(unsigned int i = 0; i < this->_modules.size(); i++)
     {
+        addTitles(15, this->_modules.at(i)->getInfos(), pos_x + 50, pos_y + 50);
         if (pos_x == 0)
         {
             this->addCadre(400, 200, pos_x, pos_y);
@@ -130,7 +133,7 @@ void    GraphicalUI::refresh(void)
     }
     for(it2 = this->_titles.begin(); it2 != ite2; it2++)
         this->_window->draw(*it2);
-	this->_window->display(); 
+	this->_window->display();
 }
 
 GraphicalUI::~GraphicalUI(void)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   CpuModule.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arive-de <arive-de@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgourdin <jgourdin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/20 14:25:03 by arive-de          #+#    #+#             */
-/*   Updated: 2019/01/20 16:27:40 by arive-de         ###   ########.fr       */
+/*   Updated: 2019/01/20 17:30:21 by jgourdin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 CpuModule::CpuModule(void) {
 
+    this->_bufferlen = BUFFER_LEN;
     this->_coreCount = "Number of core: " + getStdOut("sysctl -n machdep.cpu.core_count");
     this->_model = "Cpu model: " + getStdOut("sysctl -n machdep.cpu.brand_string");
     this->_clockSpeed = "Clock Speed: " + getStdOut("sysctl -n hw.cpufrequency");

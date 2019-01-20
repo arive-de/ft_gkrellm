@@ -6,7 +6,7 @@
 /*   By: jgourdin <jgourdin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/19 12:11:49 by jgourdin          #+#    #+#             */
-/*   Updated: 2019/01/20 14:50:13 by jgourdin         ###   ########.fr       */
+/*   Updated: 2019/01/20 16:38:21 by jgourdin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ public:
 private:
 	IMonitorDisplay &		operator=(IMonitorDisplay const & rhs);
     IMonitorDisplay(IMonitorDisplay const &src);
-
 };
 
 #endif

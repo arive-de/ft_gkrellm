@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   UsernameModule.cpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arive-de <arive-de@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgourdin <jgourdin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/20 14:24:50 by arive-de          #+#    #+#             */
-/*   Updated: 2019/01/20 15:28:52 by arive-de         ###   ########.fr       */
+/*   Updated: 2019/01/20 17:38:31 by jgourdin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ UsernameModule & UsernameModule::operator=(UsernameModule const & rhs) {
     return *this;
 }
 
-std::string       UsernameModule::getUserName(void)
+std::string       UsernameModule::getInfos(void)
 {
     return this->_username;
 }

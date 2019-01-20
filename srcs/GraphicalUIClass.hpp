@@ -6,7 +6,7 @@
 /*   By: jgourdin <jgourdin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/19 14:55:34 by jgourdin          #+#    #+#             */
-/*   Updated: 2019/01/20 15:22:54 by jgourdin         ###   ########.fr       */
+/*   Updated: 2019/01/20 16:52:39 by jgourdin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <iostream>
 # include "IMonitorDisplayClass.hpp"
+# include "IMonitorModuleClass.hpp"
 # include <vector>
 
 #include <SFML/Window.hpp>
@@ -36,7 +37,7 @@ public:
 
 
 private:
-        //std::vector<IMonitorModule*>	_modules;
+        std::vector<IMonitorModule*>	_modules;
         sf::RenderWindow				*_window;
         std::vector<sf::RectangleShape> _rectangles;
         std::vector<sf::RectangleShape> _cadres;

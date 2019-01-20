@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   HostnameModule.cpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arive-de <arive-de@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgourdin <jgourdin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/20 14:24:57 by arive-de          #+#    #+#             */
-/*   Updated: 2019/01/20 16:28:45 by arive-de         ###   ########.fr       */
+/*   Updated: 2019/01/20 17:24:45 by jgourdin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "HostnameModule.hpp"
 
 HostnameModule::HostnameModule(void) {
-
+    this->_bufferlen = BUFFER_LEN;
     this->_hostname = getStdOut("sysctl -n kern.hostname");
 }
 
@@ -44,6 +44,7 @@ std::string           HostnameModule::getStdOut(std::string cmd)
     FILE * stream;
 
     cmd.append(" 2>&1");
+
 
     stream = popen(cmd.c_str(), "r");
     if (stream)
