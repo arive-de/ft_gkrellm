@@ -17,6 +17,8 @@ RamModule::RamModule(void) {
     this->_bufferlen = BUFFER_LEN;
     this->_ram += "Ram: ";
     this->_ram += getStdOut("sysctl -n hw.memsize");
+    this->_ram = this->_ram.substr(0, 6);
+    this->_ram += " GB";
 }
 
 RamModule::RamModule(RamModule const & src) {
