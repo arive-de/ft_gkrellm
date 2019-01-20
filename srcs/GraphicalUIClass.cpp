@@ -6,7 +6,7 @@
 /*   By: jgourdin <jgourdin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/19 14:55:45 by jgourdin          #+#    #+#             */
-/*   Updated: 2019/01/20 20:18:57 by jgourdin         ###   ########.fr       */
+/*   Updated: 2019/01/20 20:20:03 by jgourdin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,6 @@ GraphicalUI::GraphicalUI(sf::RenderWindow &window) : _window(&window)
 	this->_modules.push_back(new RamModule());
     if (!this->_font.loadFromFile("Fonts/Dosis-Light.ttf"))
 		throw("COULD NOT LOAD FONT!");
-    /*this->addTitles(15, "Hostname/username modules :", 50, 130);
-    this->addTitles(15, "OSinfo :", 570, 130);
-    this->addTitles(15, "Date/time module :", 120, 330);
-    this->addTitles(15, "CPUmodule :", 570, 330);
-    this->addTitles(15, "RAMmodule :", 120, 530);
-    this->addTitles(15, "FT_GKRELLM", 300, 35); */
     this->addRectangle(800, 100, 0, 0);
     this->addRectangle(800, 800, 0, 100);
     if (!this->_space.loadFromFile("Textures/space.jpg"))
