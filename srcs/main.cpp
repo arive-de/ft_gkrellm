@@ -6,7 +6,7 @@
 /*   By: jgourdin <jgourdin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/19 18:05:46 by arive-de          #+#    #+#             */
-/*   Updated: 2019/01/20 19:58:40 by jgourdin         ###   ########.fr       */
+/*   Updated: 2019/01/20 20:00:00 by jgourdin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ int main(int argc, char **argv)
 	ShellUI shell;
 	if (argc != 2)
 		std::cout << "Please enter Shell or Graphics" << std::endl;
-	else if (argv[1] == "Shell")
+	else if (!std::strcmp(argv[1],"Shell"))
     	shell.init_display();
-	else if (argv[1] == "Graphics")
+	else if (!std::strcmp(argv[1],"Graphics"))
 	{
 		sf::RenderWindow window(sf::VideoMode(800, 700), "Text intro", sf::Style::Default);
 		window.setFramerateLimit(60);
@@ -47,5 +47,5 @@ int main(int argc, char **argv)
 	}
 	else
 		std::cout << "Please enter Shell or Graphics" << std::endl;
-	return ;
+	return 0;
 }
