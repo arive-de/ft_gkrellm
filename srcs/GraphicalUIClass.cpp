@@ -6,7 +6,7 @@
 /*   By: jgourdin <jgourdin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/19 14:55:45 by jgourdin          #+#    #+#             */
-/*   Updated: 2019/01/20 18:28:09 by jgourdin         ###   ########.fr       */
+/*   Updated: 2019/01/20 19:55:25 by jgourdin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,9 +91,21 @@ void    GraphicalUI::render(void)
     this->_cadres.erase(this->_cadres.begin(), this->_cadres.end());
     int     pos_x = 0;
     int     pos_y = 100;
+    std::string     tmp;
+    size_t     pospos;
     for(unsigned int i = 0; i < this->_modules.size(); i++)
     {
-        addTitles(15, this->_modules.at(i)->getInfos(), pos_x + 50, pos_y + 50);
+        tmp = this->_modules.at(i)->getInfos();
+        pospos = tmp.find("Numb");
+        if (pospos != std::string::npos)
+            tmp[pospos - 1] = '\n';
+        pospos = tmp.find("Cpu");
+        if (pospos != std::string::npos)
+            tmp[pospos - 1] = '\n';
+        pospos = tmp.find("Cloc");
+        if (pospos != std::string::npos)
+            tmp[pospos - 1] = '\n'; 
+        addTitles(15, tmp, pos_x + 50, pos_y + 50);
         if (pos_x == 0)
         {
             this->addCadre(400, 200, pos_x, pos_y);
