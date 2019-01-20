@@ -6,11 +6,7 @@
 /*   By: arive-de <arive-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/20 14:25:03 by arive-de          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2019/01/20 18:33:42 by jgourdin         ###   ########.fr       */
-=======
-/*   Updated: 2019/01/20 19:25:51 by arive-de         ###   ########.fr       */
->>>>>>> Alix
+/*   Updated: 2019/01/20 19:39:26 by arive-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,8 +112,8 @@ std::string          CpuModule::getInfos(void)
     this->_userStr = this->_userStr.substr(0, 4) + "%%";
     this->_idleStr = std::to_string(static_cast<float>(this->_idleTicks) / 4);
     this->_idleStr = this->_idleStr.substr(0, 5) + "%%";
-    this->_cpuModule = "CPU usage: " + this->_cpuStr + "  Sys: " + this->_userStr + "  Idle: " + this->_idleStr;
-    this->_cpuModule += "  Number of core: " + this->_coreCount + "  Model: " + this->_model + " Clock speed: " + this->_clockSpeed;
+    this->_cpuModule = "CPU usage: " + this->_cpuStr + "   Sys: " + this->_userStr + "     Idle: " + this->_idleStr;
+    this->_cpuModule += "     " + this->_coreCount + "     " + this->_model + "     " + this->_clockSpeed;
     return this->_cpuModule;
 }
 
