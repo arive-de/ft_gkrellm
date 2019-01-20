@@ -6,7 +6,7 @@
 /*   By: arive-de <arive-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/19 12:04:13 by jgourdin          #+#    #+#             */
-/*   Updated: 2019/01/20 16:25:19 by arive-de         ###   ########.fr       */
+/*   Updated: 2019/01/20 16:34:41 by arive-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 # include <mach/mach.h>
 # include <mach/mach_error.h>
 # include <mach-o/arch.h>
-# define BUFFER_LEN 100000
 
 class IMonitorModule {
 

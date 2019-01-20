@@ -6,7 +6,7 @@
 /*   By: arive-de <arive-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/20 14:25:02 by arive-de          #+#    #+#             */
-/*   Updated: 2019/01/20 16:26:07 by arive-de         ###   ########.fr       */
+/*   Updated: 2019/01/20 16:34:56 by arive-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CPU_MODULE_HPP
 
 # include "IMonitorModuleClass.hpp"
+# define BUFFER_LEN 1000
 
 class CpuModule : public IMonitorModule {
 
