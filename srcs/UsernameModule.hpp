@@ -6,7 +6,7 @@
 /*   By: jgourdin <jgourdin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/20 14:24:47 by arive-de          #+#    #+#             */
-/*   Updated: 2019/01/20 17:38:36 by jgourdin         ###   ########.fr       */
+/*   Updated: 2019/01/20 17:42:34 by jgourdin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define USERNAME_MODULE_HPP
 
 # include "IMonitorModuleClass.hpp"
+# define BUFFER_LEN 1000
 
 class UsernameModule : public IMonitorModule {
 
