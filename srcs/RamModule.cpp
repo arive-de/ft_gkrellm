@@ -1,51 +1,53 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HostnameModule.cpp                                 :+:      :+:    :+:   */
+/*   RamModule.cpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arive-de <arive-de@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgourdin <jgourdin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/20 14:24:57 by arive-de          #+#    #+#             */
-/*   Updated: 2019/01/20 20:01:29 by arive-de         ###   ########.fr       */
+/*   Updated: 2019/01/20 17:24:45 by jgourdin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "HostnameModule.hpp"
+#include "RamModule.hpp"
 
-HostnameModule::HostnameModule(void) {
+RamModule::RamModule(void) {
+
     this->_bufferlen = BUFFER_LEN;
-    this->_hostname += "Hostname: ";
-    this->_hostname += getStdOut("sysctl -n kern.hostname");
+    this->_ram += "Ram: ";
+    this->_ram += getStdOut("sysctl -n hw.memsize");
 }
 
-HostnameModule::HostnameModule(HostnameModule const & src) {
+RamModule::RamModule(RamModule const & src) {
 
     *this = src;
 }
 
-HostnameModule::~HostnameModule(void) {
+RamModule::~RamModule(void) {
 
 
 }
 
-HostnameModule & HostnameModule::operator=(HostnameModule const & rhs) {
+RamModule & RamModule::operator=(RamModule const & rhs) {
 
-    this->_hostname = rhs._hostname;
+    this->_ram = rhs._ram;
     return *this;
 }
 
-std::string                HostnameModule::getInfos(void)
+std::string                RamModule::getInfos(void)
 {
-    return this->_hostname;
+    return this->_ram;
 }
 
-std::string           HostnameModule::getStdOut(std::string cmd)
+std::string           RamModule::getStdOut(std::string cmd)
 {
     std::string data;
     FILE * stream;
 
     cmd.append(" 2>&1");
 
+    // sysctlbyname("net.inet.ip.stats", oldp, &oldlen, newp, newlen);
 
     stream = popen(cmd.c_str(), "r");
     if (stream)

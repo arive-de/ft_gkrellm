@@ -1,45 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HostnameModule.cpp                                 :+:      :+:    :+:   */
+/*   NetworkModule.cpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arive-de <arive-de@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgourdin <jgourdin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/20 14:24:57 by arive-de          #+#    #+#             */
-/*   Updated: 2019/01/20 20:01:29 by arive-de         ###   ########.fr       */
+/*   Updated: 2019/01/20 17:24:45 by jgourdin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "HostnameModule.hpp"
+#include "NetworkModule.hpp"
 
-HostnameModule::HostnameModule(void) {
+NetworkModule::NetworkModule(void) {
     this->_bufferlen = BUFFER_LEN;
-    this->_hostname += "Hostname: ";
-    this->_hostname += getStdOut("sysctl -n kern.hostname");
+    this->_network = getStdOut("sysctl -n kern.Network");
 }
 
-HostnameModule::HostnameModule(HostnameModule const & src) {
+NetworkModule::NetworkModule(NetworkModule const & src) {
 
     *this = src;
 }
 
-HostnameModule::~HostnameModule(void) {
+NetworkModule::~NetworkModule(void) {
 
 
 }
 
-HostnameModule & HostnameModule::operator=(HostnameModule const & rhs) {
+NetworkModule & NetworkModule::operator=(NetworkModule const & rhs) {
 
-    this->_hostname = rhs._hostname;
+    this->_network = rhs._network;
     return *this;
 }
 
-std::string                HostnameModule::getInfos(void)
+std::string                NetworkModule::getInfos(void)
 {
-    return this->_hostname;
+    return this->_network;
 }
 
-std::string           HostnameModule::getStdOut(std::string cmd)
+std::string           NetworkModule::getStdOut(std::string cmd)
 {
     std::string data;
     FILE * stream;
