@@ -6,7 +6,7 @@
 /*   By: jgourdin <jgourdin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/19 14:55:45 by jgourdin          #+#    #+#             */
-/*   Updated: 2019/01/20 17:40:41 by jgourdin         ###   ########.fr       */
+/*   Updated: 2019/01/20 18:01:26 by jgourdin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ void    GraphicalUI::addCadre(int size_x, int size_y, int pos_x, int pos_y)
 void    GraphicalUI::render(void)
 {
     this->_window->clear();
+    this->_titles.erase(this->_titles.begin(), this->_titles.end());
     this->_cadres.erase(this->_cadres.begin(), this->_cadres.end());
     int     pos_x = 0;
     int     pos_y = 100;
@@ -109,7 +110,7 @@ void    GraphicalUI::render(void)
 
 void    GraphicalUI::refresh(void)
 {
-    this->_window->clear();
+    this->_window->clear(sf::Color::Black);
     sf::RectangleShape  shapetmp;
     std::vector<sf::RectangleShape>::const_iterator it = this->_rectangles.begin();
     std::vector<sf::RectangleShape>::const_iterator ite = this->_rectangles.end();
@@ -132,7 +133,9 @@ void    GraphicalUI::refresh(void)
         this->_window->draw(shapetmp);
     }
     for(it2 = this->_titles.begin(); it2 != ite2; it2++)
+    {
         this->_window->draw(*it2);
+    }
 	this->_window->display();
 }
 
