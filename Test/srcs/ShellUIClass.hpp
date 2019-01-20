@@ -6,7 +6,7 @@
 /*   By: jgourdin <jgourdin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/19 14:56:37 by jgourdin          #+#    #+#             */
-/*   Updated: 2019/01/20 12:30:41 by jgourdin         ###   ########.fr       */
+/*   Updated: 2019/01/20 16:03:54 by jgourdin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 # define SHELLUICLASS_HPP
 
 # include <iostream>
-# include "MonitorDisplayClass.hpp"
+# include "IMonitorDisplayClass.hpp"
 
-class ShellUI: public MonitorDisplay
+class ShellUI: public IMonitorDisplay
 {
 
 public: 

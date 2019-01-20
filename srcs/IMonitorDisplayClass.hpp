@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   IMonitorDisplayClass.hpp                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arive-de <arive-de@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgourdin <jgourdin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/19 12:11:49 by jgourdin          #+#    #+#             */
-/*   Updated: 2019/01/20 15:39:52 by arive-de         ###   ########.fr       */
+/*   Updated: 2019/01/20 14:50:13 by jgourdin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,14 @@ class IMonitorDisplay {
 public: 
 
     IMonitorDisplay(void); 
-    IMonitorDisplay(IMonitorDisplay const & src); 
-    ~IMonitorDisplay(void); 
+    virtual ~IMonitorDisplay(void); 
 
+    virtual void		refresh(void) = 0;
+	virtual void		render(void) = 0;
+
+private:
 	IMonitorDisplay &		operator=(IMonitorDisplay const & rhs);
-
-    virtual void    init_display(void) = 0;
-
-protected:
-
-    WINDOW *_win;
+    IMonitorDisplay(IMonitorDisplay const &src);
 
 };
 

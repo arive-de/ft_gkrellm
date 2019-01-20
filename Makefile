@@ -1,81 +1,55 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: arive-de <arive-de@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2017/11/09 18:11:43 by zweng             #+#    #+#              #
-#    Updated: 2019/01/20 15:36:41 by arive-de         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+NAME = ft_gkrellm
 
+SRCSFILES = main.cpp GraphicalUIClass.cpp IMonitorDisplayClass.cpp
+
+SRCPATH = srcs
+OBJPATH = obj
 CC = clang++
+INCLUDES = -I $(SRCPATH) -I $(shell pwd)/SFML/include
+# LIBS =	-L SFML/lib -lsfml-graphics -lsfml-window -lsfml-system\
+# 		SFML/Frameworks/sfml-graphics.framework/sfml-graphics\
+# 		SFML/Frameworks/sfml-window.framework/sfml-window\
+# 		SFML/Frameworks/sfml-system.framework/sfml-system
+# LIBS = -L SFML/lib -lsfml-graphics -lsfml-window -lsfml-system
 
-# ----- part to change -----
+LDENV = DYLD_FRAMEWORK_PATH="$(shell pwd)/SFML/Frameworks"
+# export DYLD_FRAMEWORK_PATH=`pwd`"/SFML/Frameworks"
 
-NAME 			= ft_gkrellm
+LIBS =	-framework sfml-graphics -framework sfml-window -framework sfml-system\
+		-F SFML/Frameworks -lncurses
+CFLAGS = -Werror -Wall -Wextra -O2 -g
+RM = rm -rf
 
-HEADER_PATH 	= includes
-SRC_PATH 		= srcs
+SRC = $(addprefix $(SRCPATH)/,$(SRCSFILES))
+OBJECTS = $(SRC:$(SRCPATH)/%.cpp=$(OBJPATH)/%.o)
 
-SRC_NAME		= main.cpp \
-			IMonitorDisplayClass.cpp \
-			IMonitorModuleClass.cpp \
-			CpuModule.cpp \
-			DatetimeModule.cpp \
-			OsInfosModule.cpp \
-			HostnameModule.cpp \
-			UsernameModule.cpp
-
-OBJ_PATH =  obj
-OBJ_NAME =  $(SRC_NAME:.cpp=.o)
-CPPFLAGS = -I$(HEADER_PATH) 
-LIBFLAG = -lncurses
-CFLAGS = -Wall -Wextra -Werror
-
-# ----- part automatic -----
-SRCS := $(addprefix $(SRC_PATH)/,$(SRC_NAME))
-OBJS := $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
-
-# ----- Colors -----
-BLACK:="\033[1;30m"
-RED:="\033[1;31m"
-GREEN:="\033[1;32m"
-CYAN:="\033[1;35m"
-PURPLE:="\033[1;36m"
-WHITE:="\033[1;37m"
-EOC:="\033[0;0m"
-#  # ==================
-
-# ----- part rules -----
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	@$(CC) $(OBJS) $(CPPFLAGS)  $(LIBFLAG) -o $@
-	@printf $(GREEN)"$(NAME) Finish linking\n"$(EOC)
+$(NAME): $(OBJECTS)
+	@echo "Compiling all"
+	$(CC) -o $@ $(CFLAGS) $(OBJECTS) $(LIBS)
 
-$(OBJ_PATH)/%.o: $(SRC_PATH)/%.cpp | $(OBJ_PATH)
-	@$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
-	@printf $(GREEN)"compiling %s\n"$(GREEN) $<
+$(OBJECTS): $(OBJPATH)/%.o : $(SRCPATH)/%.cpp
+	@mkdir -p $(dir $@)
+	$(CC) -o $@ $(CFLAGS) $(INCLUDES) -c $<
 
-$(OBJ_PATH):
-	@mkdir $(OBJ_PATH) 2> /dev/null
+rmsfml:
+	rm -rf SFML
+sfml: rmsfml
+	curl -O "https://www.sfml-dev.org/files/SFML-2.2-osx-clang-universal.tar.gz" 
+	mkdir SFML
+	tar -xzf SFML-2.2-osx-clang-universal.tar.gz -C SFML --strip-components=1
+	mv SFML/extlibs/freetype.framework SFML/Frameworks/
+	rm -rf "SFML-2.2-osx-clang-universal.tar.gz"
+
+ldenv:
+	@echo export $(LDENV)
 
 clean:
-	@rm -f $(OBJS)
-	@rmdir $(OBJ_PATH) 2> /dev/null || true
-	@printf $(GREEN)"$(NAME) clean\n"$(EOC)
+	$(RM) $(OBJPATH)
 
 fclean: clean
-	@/bin/rm -f $(NAME)
-	@printf $(GREEN)"$(NAME) fclean\n"$(EOC)
+	$(RM) $(NAME)
 
 re: fclean all
-
-norme:
-	@norminette $(SRCS)
-	@norminette $(HEADER_PATH)/*.h
-
-.PHONY: clean fclean all re norme

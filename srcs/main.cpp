@@ -3,52 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arive-de <arive-de@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgourdin <jgourdin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/19 11:40:25 by arive-de          #+#    #+#             */
-/*   Updated: 2019/01/20 15:37:14 by arive-de         ###   ########.fr       */
+/*   Created: 2019/01/19 18:05:46 by jgourdin          #+#    #+#             */
+/*   Updated: 2019/01/20 16:04:38 by jgourdin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "IMonitorDisplayClass.hpp"
-#include "IMonitorModuleClass.hpp"
-
-int     main( void ) {
-
-    // MonitorDisplay display;
-    // MonitorModule  module;
+#include <SFML/Window.hpp>
 
 
-    // std::cout << module.getHostName() << std::endl;
-    // std::cout << module.getUserName() << std::endl;
-    // std::cout << module.getDateTime() << std::endl;
-    // std::cout << module.getOsInfos() << std::endl;
-    // std::cout << module.CPUModule() << std::endl;
+#include<iostream>
+#include <SFML/Graphics.hpp>
+#include <SFML/Window.hpp>
+#include <SFML/System.hpp>
+#include "GraphicalUIClass.hpp"
 
-    // display.init_display();
-    // wrefresh(stdscr);
-
-    // int keycode;
-
-    // while (1)
-    // {
-    //     if (display.duration())
-    //     {
-
-            
-    //         wrefresh(stdscr);
-    //     }
-    //     if ((keycode = getch()) == ERR)
-    //         continue;
-    //     else if (keycode == 'p')
-    //     {
-    //         std::cout << "previous" << std::endl;
-    //     }
-    //     else if (keycode == 'n')
-    //     {
-    //         std::cout << "next" << std::endl;           
-    //     }
-    // }
-    // endwin();
-    return 0;
+int main()
+{
+	sf::RenderWindow window(sf::VideoMode(800, 700), "Text intro", sf::Style::Default);
+	window.setFramerateLimit(60);
+	GraphicalUI		ui(window);
+	while (window.isOpen())
+	{
+		sf::Event event;
+		while (window.pollEvent(event))
+		{
+			if (event.type == sf::Event::Closed)
+				window.close();
+		}
+		ui.render();
+		ui.refresh();
+	}
 }
