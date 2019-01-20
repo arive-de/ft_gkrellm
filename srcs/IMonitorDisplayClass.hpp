@@ -6,7 +6,7 @@
 /*   By: arive-de <arive-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/19 12:11:49 by jgourdin          #+#    #+#             */
-/*   Updated: 2019/01/19 15:27:16 by arive-de         ###   ########.fr       */
+/*   Updated: 2019/01/20 15:39:52 by arive-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,11 @@ public:
 
 	IMonitorDisplay &		operator=(IMonitorDisplay const & rhs);
 
+    virtual void    init_display(void) = 0;
+
 protected:
+
+    WINDOW *_win;
 
 };
 

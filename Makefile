@@ -6,7 +6,7 @@
 #    By: arive-de <arive-de@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/09 18:11:43 by zweng             #+#    #+#              #
-#    Updated: 2019/01/19 15:33:19 by arive-de         ###   ########.fr        #
+#    Updated: 2019/01/20 15:36:41 by arive-de         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,8 +22,11 @@ SRC_PATH 		= srcs
 SRC_NAME		= main.cpp \
 			IMonitorDisplayClass.cpp \
 			IMonitorModuleClass.cpp \
-			MonitorDisplayClass.cpp \
-			MonitorModuleClass.cpp
+			CpuModule.cpp \
+			DatetimeModule.cpp \
+			OsInfosModule.cpp \
+			HostnameModule.cpp \
+			UsernameModule.cpp
 
 OBJ_PATH =  obj
 OBJ_NAME =  $(SRC_NAME:.cpp=.o)
