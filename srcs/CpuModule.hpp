@@ -6,7 +6,7 @@
 /*   By: arive-de <arive-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/20 14:25:02 by arive-de          #+#    #+#             */
-/*   Updated: 2019/01/20 15:30:17 by arive-de         ###   ########.fr       */
+/*   Updated: 2019/01/20 16:26:07 by arive-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ public:
 
         CpuModule & operator=(CpuModule const & rhs);
 
-        std::string    getCpuUsage(void);
+        std::string    getInfos(void);
+        std::string    getStdOut(std::string cmd);
         host_cpu_load_info_data_t getCpuInfo(void);
         mach_msg_type_number_t getCount(void);
         unsigned long  getCpuTicks(void);
@@ -34,8 +35,11 @@ public:
 	unsigned long  getPrevCpuTicks(void);
 	unsigned long  getPrevUserTicks(void);    
 	unsigned long  getPrevIdleTicks(void);
+
 private:
 
+        char            _buffer[BUFFER_LEN];
+        size_t          _bufferlen;
         std::string     _cpuModule;
         std::string     _coreCount;
         std::string     _model;

@@ -1,6 +1,14 @@
 NAME = ft_gkrellm
 
-SRCSFILES = main.cpp GraphicalUIClass.cpp IMonitorDisplayClass.cpp
+SRCSFILES = main.cpp \
+			GraphicalUIClass.cpp \
+			IMonitorDisplayClass.cpp \
+			IMonitorModuleClass.cpp \
+			CpuModule.cpp \
+			DatetimeModule.cpp \
+			OsInfosModule.cpp \
+			HostnameModule.cpp \
+			UsernameModule.cpp
 
 SRCPATH = srcs
 OBJPATH = obj

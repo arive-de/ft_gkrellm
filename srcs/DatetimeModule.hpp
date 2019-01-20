@@ -6,7 +6,7 @@
 /*   By: arive-de <arive-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/20 14:24:58 by arive-de          #+#    #+#             */
-/*   Updated: 2019/01/20 15:08:01 by arive-de         ###   ########.fr       */
+/*   Updated: 2019/01/20 16:31:20 by arive-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ public:
 
         DatetimeModule & operator=(DatetimeModule const & rhs);
 
-        std::string    getDateTime(void);
+        std::string    getInfos(void);
 
 
 private:

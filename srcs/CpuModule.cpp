@@ -6,7 +6,7 @@
 /*   By: arive-de <arive-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/20 14:25:03 by arive-de          #+#    #+#             */
-/*   Updated: 2019/01/20 15:31:20 by arive-de         ###   ########.fr       */
+/*   Updated: 2019/01/20 16:27:40 by arive-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 CpuModule::CpuModule(void) {
 
-    this->_coreCount = "Number of core: " + IMonitorModule::getStdOut("sysctl -n machdep.cpu.core_count");
-    this->_model = "Cpu model: " + IMonitorModule::getStdOut("sysctl -n machdep.cpu.brand_string");
-    this->_clockSpeed = "Clock Speed: " + IMonitorModule::getStdOut("sysctl -n hw.cpufrequency");
+    this->_coreCount = "Number of core: " + getStdOut("sysctl -n machdep.cpu.core_count");
+    this->_model = "Cpu model: " + getStdOut("sysctl -n machdep.cpu.brand_string");
+    this->_clockSpeed = "Clock Speed: " + getStdOut("sysctl -n hw.cpufrequency");
     this->_bufferlen = BUFFER_LEN;
     this->_cpuTicks = 0;
 	this->_userTicks = 0;
@@ -36,13 +36,12 @@ CpuModule::~CpuModule(void) {
 
 }
 
-
 CpuModule & CpuModule::operator=(CpuModule const & rhs) {
 
     this->_coreCount = rhs._coreCount;
     this->_model = rhs._model;
     this->_clockSpeed = rhs._clockSpeed;
-    // this->_bufferlen = rhs._bufferlen;
+    this->_bufferlen = rhs._bufferlen;
     this->_cpuinfo = rhs._cpuinfo;
     this->_count = rhs._count;
     this->_cpuTicks = rhs._cpuTicks;
@@ -95,7 +94,7 @@ unsigned long  CpuModule::getPrevIdleTicks(void)
     return this->_prevIdleTicks;
 }
 
-std::string          CpuModule::getCpuUsage(void)
+std::string          CpuModule::getInfos(void)
 {
     this->_count = HOST_CPU_LOAD_INFO_COUNT;
 	if (host_statistics(mach_host_self(), HOST_CPU_LOAD_INFO, reinterpret_cast<host_info_t>(&this->_cpuinfo), &this->_count) == KERN_SUCCESS)
@@ -107,4 +106,23 @@ std::string          CpuModule::getCpuUsage(void)
     
     this->_cpuModule = this->_coreCount + "\n" + this->_clockSpeed + "\n" + this->_model;
     return this->_cpuModule;
+}
+
+std::string           CpuModule::getStdOut(std::string cmd)
+{
+    std::string data;
+    FILE * stream;
+
+    cmd.append(" 2>&1");
+
+    stream = popen(cmd.c_str(), "r");
+    if (stream)
+    {
+        while (!feof(stream))
+            if (fgets(this->_buffer, this->_bufferlen, stream) != NULL) data.append(this->_buffer);
+              pclose(stream);
+    }
+    memset(this->_buffer, 0, sizeof(this->_buffer));
+    data = data.substr(0, data.size() - 1);
+    return data;
 }

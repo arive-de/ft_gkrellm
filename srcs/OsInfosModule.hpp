@@ -6,7 +6,7 @@
 /*   By: arive-de <arive-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/20 14:24:52 by arive-de          #+#    #+#             */
-/*   Updated: 2019/01/20 15:08:22 by arive-de         ###   ########.fr       */
+/*   Updated: 2019/01/20 16:30:23 by arive-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,15 @@ public:
 
         OsInfosModule & operator=(OsInfosModule const & rhs);
 
-        std::string    getOsInfos(void);
+        std::string    getInfos(void);
+        std::string    getStdOut(std::string);
 
 private:
 
         std::string     _osInfos;
+        std::string     buffer[BUFFER_LEN];
+        char            _buffer[BUFFER_LEN];
+        size_t          _bufferlen;
 };
 
 #endif

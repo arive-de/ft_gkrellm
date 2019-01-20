@@ -6,7 +6,7 @@
 /*   By: arive-de <arive-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/20 14:24:56 by arive-de          #+#    #+#             */
-/*   Updated: 2019/01/20 15:08:08 by arive-de         ###   ########.fr       */
+/*   Updated: 2019/01/20 16:30:42 by arive-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,15 @@ public:
 
         HostnameModule & operator=(HostnameModule const & rhs);
 
-        std::string    getHostName(void);
+        std::string    getInfos(void);
+        std::string    getStdOut(std::string cmd);
 
 
 private:
 
         std::string     _hostname;
+        char            _buffer[BUFFER_LEN];
+        size_t          _bufferlen;
 };
 
 #endif
