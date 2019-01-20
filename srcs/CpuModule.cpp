@@ -6,7 +6,11 @@
 /*   By: arive-de <arive-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/20 14:25:03 by arive-de          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2019/01/20 18:35:03 by arive-de         ###   ########.fr       */
+=======
+/*   Updated: 2019/01/20 18:33:42 by jgourdin         ###   ########.fr       */
+>>>>>>> wad
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,15 +101,17 @@ unsigned long  CpuModule::getPrevIdleTicks(void)
 
 std::string          CpuModule::getInfos(void)
 {
-    this->_count = HOST_CPU_LOAD_INFO_COUNT;
-	if (host_statistics(mach_host_self(), HOST_CPU_LOAD_INFO, reinterpret_cast<host_info_t>(&this->_cpuinfo), &this->_count) == KERN_SUCCESS)
-    {  
+
+    if (host_statistics(mach_host_self(), HOST_CPU_LOAD_INFO, reinterpret_cast<host_info_t>(&this->_cpuinfo), &this->_count) == KERN_SUCCESS)
+    {
+        this->_userTicks = (this->_cpuinfo.cpu_ticks[0] - this->_prevUserTicks);
+        this->_cpuTicks = (this->_cpuinfo.cpu_ticks[1] - this->_prevCpuTicks);
+        this->_idleTicks = (this->_cpuinfo.cpu_ticks[2] - this->_prevIdleTicks);
         this->_prevUserTicks = this->_cpuinfo.cpu_ticks[0];
-		this->_prevCpuTicks = this->_cpuinfo.cpu_ticks[1];
-		this->_prevIdleTicks = this->_cpuinfo.cpu_ticks[2];
+        this->_prevCpuTicks = this->_cpuinfo.cpu_ticks[1];
+        this->_prevIdleTicks = this->_cpuinfo.cpu_ticks[2];
     }
-    
-    this->_cpuModule = this->_coreCount + "\n" + this->_clockSpeed + "\n" + this->_model;
+    this->_cpuModule = std::to_string(static_cast<float>(this->_userTicks) / 4) + "\n" + std::to_string(static_cast<float>(this->_cpuTicks) / 4) + "\n" + std::to_string(static_cast<float>(this->_idleTicks) / 4);\
     return this->_cpuModule;
 }
 
