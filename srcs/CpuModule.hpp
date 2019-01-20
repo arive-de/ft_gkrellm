@@ -6,7 +6,7 @@
 /*   By: arive-de <arive-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/20 14:25:02 by arive-de          #+#    #+#             */
-/*   Updated: 2019/01/20 16:34:56 by arive-de         ###   ########.fr       */
+/*   Updated: 2019/01/20 19:20:22 by arive-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CPU_MODULE_HPP
 
 # include "IMonitorModuleClass.hpp"
+# include <sstream>
 # define BUFFER_LEN 1000
 
 class CpuModule : public IMonitorModule {
@@ -22,7 +23,7 @@ public:
 
         CpuModule(void);
         CpuModule(CpuModule const & src);
-        ~CpuModule(void);
+        virtual ~CpuModule(void);
 
         CpuModule & operator=(CpuModule const & rhs);
 
@@ -47,6 +48,9 @@ private:
         std::string     _clockSpeed;
         host_cpu_load_info_data_t _cpuinfo;
         mach_msg_type_number_t _count;
+        std::string     _cpuStr;
+        std::string     _userStr;
+        std::string     _idleStr;
         unsigned long   _cpuTicks;
 	unsigned long   _userTicks;
 	unsigned long   _idleTicks;

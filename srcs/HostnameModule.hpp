@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   HostnameModule.hpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgourdin <jgourdin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: arive-de <arive-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/20 14:24:56 by arive-de          #+#    #+#             */
-/*   Updated: 2019/01/20 17:42:22 by jgourdin         ###   ########.fr       */
+/*   Updated: 2019/01/20 19:21:25 by arive-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ public:
 
         HostnameModule(void);
         HostnameModule(HostnameModule const & src);
-        ~HostnameModule(void);
+        virtual ~HostnameModule(void);
 
         HostnameModule & operator=(HostnameModule const & rhs);
 

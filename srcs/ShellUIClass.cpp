@@ -6,7 +6,7 @@
 /*   By: arive-de <arive-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/19 14:56:47 by jgourdin          #+#    #+#             */
-/*   Updated: 2019/01/20 18:36:51 by arive-de         ###   ########.fr       */
+/*   Updated: 2019/01/20 19:29:35 by arive-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ ShellUI::ShellUI(void)
 	this->_modules.push_back(new HostnameModule());
 	this->_modules.push_back(new UsernameModule());
 	this->_modules.push_back(new DatetimeModule());
-    this->_modules.push_back(new OsInfosModule());
 	this->_modules.push_back(new CpuModule());
+    this->_modules.push_back(new OsInfosModule());
     return;
 }
 

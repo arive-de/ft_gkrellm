@@ -6,7 +6,7 @@
 /*   By: arive-de <arive-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/20 14:25:03 by arive-de          #+#    #+#             */
-/*   Updated: 2019/01/20 18:40:58 by arive-de         ###   ########.fr       */
+/*   Updated: 2019/01/20 19:25:51 by arive-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ CpuModule::CpuModule(void) {
     this->_coreCount = "Number of core: " + getStdOut("sysctl -n machdep.cpu.core_count");
     this->_model = "Cpu model: " + getStdOut("sysctl -n machdep.cpu.brand_string");
     this->_clockSpeed = "Clock Speed: " + getStdOut("sysctl -n hw.cpufrequency");
-    this->_bufferlen = BUFFER_LEN;
+    this->_count = HOST_CPU_LOAD_INFO_COUNT;
     this->_cpuTicks = 0;
 	this->_userTicks = 0;
 	this->_idleTicks = 0;
@@ -97,7 +97,6 @@ unsigned long  CpuModule::getPrevIdleTicks(void)
 
 std::string          CpuModule::getInfos(void)
 {
-
     if (host_statistics(mach_host_self(), HOST_CPU_LOAD_INFO, reinterpret_cast<host_info_t>(&this->_cpuinfo), &this->_count) == KERN_SUCCESS)
     {
         this->_userTicks = (this->_cpuinfo.cpu_ticks[0] - this->_prevUserTicks);
@@ -107,7 +106,14 @@ std::string          CpuModule::getInfos(void)
         this->_prevCpuTicks = this->_cpuinfo.cpu_ticks[1];
         this->_prevIdleTicks = this->_cpuinfo.cpu_ticks[2];
     }
-    this->_cpuModule = std::to_string(static_cast<float>(this->_userTicks) / 4) + "\n" + std::to_string(static_cast<float>(this->_cpuTicks) / 4) + "\n" + std::to_string(static_cast<float>(this->_idleTicks) / 4);\
+    this->_cpuStr = std::to_string(static_cast<float>(this->_cpuTicks) / 4);
+    this->_cpuStr = this->_cpuStr.substr(0, 4) + "%%";
+    this->_userStr = std::to_string(static_cast<float>(this->_userTicks) / 4);
+    this->_userStr = this->_userStr.substr(0, 4) + "%%";
+    this->_idleStr = std::to_string(static_cast<float>(this->_idleTicks) / 4);
+    this->_idleStr = this->_idleStr.substr(0, 5) + "%%";
+    this->_cpuModule = "CPU usage: " + this->_cpuStr + "  Sys: " + this->_userStr + "  Idle: " + this->_idleStr;
+    this->_cpuModule += "  Number of core: " + this->_coreCount + "  Model: " + this->_model + " Clock speed: " + this->_clockSpeed;
     return this->_cpuModule;
 }
 
