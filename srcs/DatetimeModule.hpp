@@ -6,7 +6,7 @@
 /*   By: arive-de <arive-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/20 14:24:58 by arive-de          #+#    #+#             */
-/*   Updated: 2019/01/20 16:31:20 by arive-de         ###   ########.fr       */
+/*   Updated: 2019/01/20 19:21:12 by arive-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ public:
 
         DatetimeModule(void);
         DatetimeModule(DatetimeModule const & src);
-        ~DatetimeModule(void);
+        virtual ~DatetimeModule(void);
 
         DatetimeModule & operator=(DatetimeModule const & rhs);
 

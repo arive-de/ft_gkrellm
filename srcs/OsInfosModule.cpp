@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   OsInfosModule.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgourdin <jgourdin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: arive-de <arive-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/20 14:24:54 by arive-de          #+#    #+#             */
-/*   Updated: 2019/01/20 17:24:54 by jgourdin         ###   ########.fr       */
+/*   Updated: 2019/01/20 19:33:30 by arive-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,17 @@ OsInfosModule::OsInfosModule(void) {
 
     this->_bufferlen = BUFFER_LEN;
     this->_osInfos = getStdOut("sw_vers");
+
+    size_t pos = 0;
+    std::string token;
+
+    while ((pos = this->_osInfos.find("\n")) != std::string::npos) {
+          token += this->_osInfos.substr(0, pos);
+          token += "       ";
+        this->_osInfos.erase(0, pos + 1);
+    }
+
+    this->_osInfos = token;
 }
 
 OsInfosModule::OsInfosModule(OsInfosModule const & src) {

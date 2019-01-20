@@ -8,6 +8,7 @@ SRCSFILES = main.cpp \
 			DatetimeModule.cpp \
 			OsInfosModule.cpp \
 			HostnameModule.cpp \
+			ShellUIClass.cpp \
 			UsernameModule.cpp
 
 SRCPATH = srcs

@@ -6,7 +6,7 @@
 /*   By: arive-de <arive-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/20 14:24:52 by arive-de          #+#    #+#             */
-/*   Updated: 2019/01/20 16:35:09 by arive-de         ###   ########.fr       */
+/*   Updated: 2019/01/20 19:21:30 by arive-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ public:
 
         OsInfosModule(void);
         OsInfosModule(OsInfosModule const & src);
-        ~OsInfosModule(void);
+        virtual ~OsInfosModule(void);
 
         OsInfosModule & operator=(OsInfosModule const & rhs);
 

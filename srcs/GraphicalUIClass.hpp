@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   GraphicalUIClass.hpp                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgourdin <jgourdin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: arive-de <arive-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/19 14:55:34 by jgourdin          #+#    #+#             */
-/*   Updated: 2019/01/20 16:52:39 by jgourdin         ###   ########.fr       */
+/*   Updated: 2019/01/20 17:49:47 by arive-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <vector>
 
 #include <SFML/Window.hpp>
-#include<iostream>
+#include <iostream>
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include <SFML/System.hpp>

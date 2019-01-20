@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   UsernameModule.hpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgourdin <jgourdin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: arive-de <arive-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/20 14:24:47 by arive-de          #+#    #+#             */
-/*   Updated: 2019/01/20 17:42:34 by jgourdin         ###   ########.fr       */
+/*   Updated: 2019/01/20 19:25:55 by arive-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ public:
 
         UsernameModule(void);
         UsernameModule(UsernameModule const & src);
-        ~UsernameModule(void);
+        virtual ~UsernameModule(void);
 
         UsernameModule & operator=(UsernameModule const & rhs);
 
