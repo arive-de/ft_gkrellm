@@ -6,7 +6,7 @@
 /*   By: jgourdin <jgourdin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/19 14:55:45 by jgourdin          #+#    #+#             */
-/*   Updated: 2019/01/20 19:56:10 by jgourdin         ###   ########.fr       */
+/*   Updated: 2019/01/20 20:18:57 by jgourdin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include "HostnameModule.hpp"
 #include "CpuModule.hpp"
 #include "UsernameModule.hpp"
+#include "RamModule.hpp"
 #include <iostream>
 #include <algorithm>
 
@@ -27,7 +28,7 @@ GraphicalUI::GraphicalUI(sf::RenderWindow &window) : _window(&window)
 	this->_modules.push_back(new DatetimeModule());
 	this->_modules.push_back(new CpuModule());
 	this->_modules.push_back(new UsernameModule());
-	//this->_modules.push_back(new NetworkInfoModule(" NETWORK INFO "));
+	this->_modules.push_back(new RamModule());
     if (!this->_font.loadFromFile("Fonts/Dosis-Light.ttf"))
 		throw("COULD NOT LOAD FONT!");
     /*this->addTitles(15, "Hostname/username modules :", 50, 130);
@@ -37,7 +38,7 @@ GraphicalUI::GraphicalUI(sf::RenderWindow &window) : _window(&window)
     this->addTitles(15, "RAMmodule :", 120, 530);
     this->addTitles(15, "FT_GKRELLM", 300, 35); */
     this->addRectangle(800, 100, 0, 0);
-    this->addRectangle(800, 600, 0, 100);
+    this->addRectangle(800, 800, 0, 100);
     if (!this->_space.loadFromFile("Textures/space.jpg"))
         return;
     if (!this->_metal.loadFromFile("Textures/metal.jpg"))
@@ -53,7 +54,7 @@ void    GraphicalUI::addTitles(int size, std::string text, int x, int y)
     sf::Text    text1;
     text1.setFont(this->_font);
 	text1.setCharacterSize(size);
-	text1.setColor(sf::Color::Red);
+	text1.setColor(sf::Color::Green);
 	//text1.setStyle(sf::Text::Bold);
 	text1.setString(text);
 	text1.setPosition(x, y);

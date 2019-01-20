@@ -6,7 +6,7 @@
 /*   By: jgourdin <jgourdin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/19 18:05:46 by arive-de          #+#    #+#             */
-/*   Updated: 2019/01/20 20:00:00 by jgourdin         ###   ########.fr       */
+/*   Updated: 2019/01/20 20:17:26 by jgourdin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int main(int argc, char **argv)
     	shell.init_display();
 	else if (!std::strcmp(argv[1],"Graphics"))
 	{
-		sf::RenderWindow window(sf::VideoMode(800, 700), "Text intro", sf::Style::Default);
+		sf::RenderWindow window(sf::VideoMode(800, 900), "FT_gkRELLM", sf::Style::Default);
 		window.setFramerateLimit(60);
 		GraphicalUI		ui(window);
 		while (window.isOpen())
