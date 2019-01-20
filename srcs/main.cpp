@@ -6,12 +6,10 @@
 /*   By: arive-de <arive-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/19 11:40:25 by arive-de          #+#    #+#             */
-/*   Updated: 2019/01/19 21:14:36 by arive-de         ###   ########.fr       */
+/*   Updated: 2019/01/20 15:37:14 by arive-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "MonitorDisplayClass.hpp"
-#include "MonitorModuleClass.hpp"
 #include "IMonitorDisplayClass.hpp"
 #include "IMonitorModuleClass.hpp"
 
