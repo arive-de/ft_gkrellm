@@ -6,7 +6,7 @@
 /*   By: jgourdin <jgourdin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/19 14:55:45 by jgourdin          #+#    #+#             */
-/*   Updated: 2019/01/20 20:20:03 by jgourdin         ###   ########.fr       */
+/*   Updated: 2019/01/20 20:32:03 by jgourdin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,20 @@
 #include "HostnameModule.hpp"
 #include "CpuModule.hpp"
 #include "UsernameModule.hpp"
+#include "NetworkModule.hpp"
 #include "RamModule.hpp"
 #include <iostream>
 #include <algorithm>
 
 GraphicalUI::GraphicalUI(sf::RenderWindow &window) : _window(&window)
 {
-    this->_modules.push_back(new OsInfosModule());
 	this->_modules.push_back(new HostnameModule());
-	this->_modules.push_back(new DatetimeModule());
-	this->_modules.push_back(new CpuModule());
 	this->_modules.push_back(new UsernameModule());
+	this->_modules.push_back(new DatetimeModule());
+    this->_modules.push_back(new OsInfosModule());
+	this->_modules.push_back(new CpuModule());
 	this->_modules.push_back(new RamModule());
+    this->_modules.push_back(new NetworkModule());
     if (!this->_font.loadFromFile("Fonts/Dosis-Light.ttf"))
 		throw("COULD NOT LOAD FONT!");
     this->addRectangle(800, 100, 0, 0);
