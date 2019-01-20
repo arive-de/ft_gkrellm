@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   UsernameModule.cpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgourdin <jgourdin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: arive-de <arive-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/20 14:24:50 by arive-de          #+#    #+#             */
-/*   Updated: 2019/01/20 17:38:31 by jgourdin         ###   ########.fr       */
+/*   Updated: 2019/01/20 20:04:53 by arive-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 UsernameModule::UsernameModule(void) {
 
-    this->_username = getenv("USER");
+    this->_username += "Username: ";
+    this->_username += getenv("USER");
 }
 
 UsernameModule::UsernameModule(UsernameModule const & src) {

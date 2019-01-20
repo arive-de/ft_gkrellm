@@ -8,6 +8,8 @@ SRCSFILES = main.cpp \
 			DatetimeModule.cpp \
 			OsInfosModule.cpp \
 			HostnameModule.cpp \
+			RamModule.cpp \
+			NetworkModule.cpp \
 			ShellUIClass.cpp \
 			UsernameModule.cpp
 

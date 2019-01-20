@@ -6,7 +6,7 @@
 /*   By: arive-de <arive-de@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/19 14:56:47 by jgourdin          #+#    #+#             */
-/*   Updated: 2019/01/20 19:29:35 by arive-de         ###   ########.fr       */
+/*   Updated: 2019/01/20 19:56:15 by arive-de         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ ShellUI::ShellUI(void)
 	this->_modules.push_back(new DatetimeModule());
 	this->_modules.push_back(new CpuModule());
     this->_modules.push_back(new OsInfosModule());
+    this->_modules.push_back(new RamModule());
     return;
 }
 
@@ -117,16 +118,10 @@ bool    ShellUI::duration()
 
 void    ShellUI::printModules(void) {
 
-    // std::vector<IMonitorModule*>::iterator    it;
-    // std::vector<IMonitorModule*>::iterator    ite = this->_modules.end();
-
-    // for (it = this->_modules.begin(); it != ite; it++)
-    // {
-    for (int i=0; i<5; i++)
+    for (int i=0; i<6; i++)
     {
-        mvwprintw(this->_winInfos, i + 2, 5, (this->_modules.at(i)->getInfos().c_str()));
+        mvwprintw(this->_winInfos, i + 3, 5, (this->_modules.at(i)->getInfos().c_str()));
     }
-    // }
 }
 
 
