@@ -13,8 +13,9 @@
 #include "NetworkModule.hpp"
 
 NetworkModule::NetworkModule(void) {
+
     this->_bufferlen = BUFFER_LEN;
-    this->_network = getStdOut("sysctl -n kern.Network");
+    this->_network += getStdOut("/usr/bin/top -l 1 | /usr/bin/grep Networks");
 }
 
 NetworkModule::NetworkModule(NetworkModule const & src) {
